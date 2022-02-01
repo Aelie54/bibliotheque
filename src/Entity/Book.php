@@ -4,34 +4,35 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM ;
 
-/*
+/**
  * @ORM\Entity
  * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="unique_article_details", columns={"n_isbn"})})
  */
 class Book
 {
-    /*
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
     */
-    private int $id;
-    /*
+    private int $id_book;
+
+    /**
      * @ORM\Column(length="100")
      */
     private string $title;
 
-    /*
+    /**
      * @ORM\Column(length="512")
     */
     private string $summary;
 
-    /*
+    /**
      * @ORM\Column(type="integer")
     */
     private int $n_isbn;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="author", referencedColumnName="id", nullable=true, onDelete="SET NULL")
     */
@@ -42,15 +43,6 @@ class Book
      * @ORM\JoinColumn(name="editor", referencedColumnName="id", nullable=true, onDelete="SET NULL")
     */
     private User $editor;
-
-    
-    /**
-     * Get /*
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Get /*
@@ -151,4 +143,21 @@ class Book
 
         return $this;
     }
+
+    /**
+     * Get /*
+     */ 
+    public function getId_book()
+    {
+        return $this->id_book;
+    }
+
+    public function __construct(string $title, string $summary, int $n_isbn, User $author, User $editor){
+        $this->title = $title;
+        $this->summary = $summary;
+        $this->n_isbn = $n_isbn;
+        $this->author = $author;
+        $this->editor = $editor;
+    }
+
 }

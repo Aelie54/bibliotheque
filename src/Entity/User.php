@@ -21,16 +21,18 @@ class User{
      */
     private string $name;
 
-    /*
+    
+    /**
     * @ORM\Column(length="100")
    */
    private string $email;
 
 
-    public function __construct (int $id, string $pseudo){
 
-        $this -> id = $id;
-        $this -> pseudo = $pseudo;
+    public function __construct (string $name, string $email){
+
+    $this->name = $name;
+    $this->email = $email;
 
     }
 
@@ -83,5 +85,5 @@ class User{
 
       return $this;
    }
-   
+
 }

@@ -4,31 +4,31 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM ;
 
-/*
+/**
  * @ORM\Entity
  */
 class Rate
 {
-    /*
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
     */
-    private int $id;
+    private int $id_rate;
 
-    /*
+    /**
      * @ORM\Column(length="512")
     */
     private string $comment;
 
-    /*
+    /**
      * @ORM\Column(type="integer")
     */
     private int $note;
 
     /**
      * @ORM\ManyToOne(targetEntity="Book")
-     * @ORM\JoinColumn(name="book", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="book", referencedColumnName="id_book", onDelete="CASCADE")
     */
     private Book $book;
 
@@ -38,15 +38,6 @@ class Rate
         $this->comment = $comment;
         $this->note = $note;
         $this->book = $book;
-    }
-
-
-    /**
-     * Get /*
-     */ 
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -111,4 +102,12 @@ class Rate
         return $this;
     }
 
+
+    /**
+     * Get /*
+     */ 
+    public function getId_rate()
+    {
+        return $this->id_rate;
+    }
 }
