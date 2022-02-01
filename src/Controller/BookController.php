@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use App\Entity\Book;
 use App\Entity\User;
+use App\Entity\Rate;
 
 
 class BookController
@@ -16,6 +17,11 @@ class BookController
         "title",
         "summary",
         "n_isbn"
+    ];
+
+    const NEEDLES2 = [
+        "comment",
+        "note"
     ];
 
     public static function index()
@@ -43,6 +49,49 @@ class BookController
         print($oBook->getTitle());
         print("  resumé :   ");
         print($oBook->getSummary());
+
+
+        echo '<form action="" method="POST">
+
+            <div>
+                <label for="comment">Commentaire :</label>
+               <input type="text" id="comment" name="comment" />
+            </div>
+        
+            <div>
+                <label for="note">Note /5 :</label>
+               <input type="text" id="note" name="note" />
+            </div>
+
+            
+            <div class="button">
+               <button type="submit">Envoyer</button>
+            </div>       
+        
+        </form>';
+
+
+        if (!empty($_POST)) {
+
+            echo('commentaire:');
+
+            foreach (self::NEEDLES2 as $value) {
+
+                if ($_POST[$value] !== "") {
+                    $_POST[$value] = htmlentities(strip_tags($_POST[$value]));
+                }
+            }
+
+                var_dump($_POST["commentaire"].(int)$_POST["note"]);
+                die('---END---');
+
+            $new_note = new Rate($_POST['comment'], $_POST['note'], $oBook);
+            $entityManager->persist($new_note);
+            $entityManager->flush();
+
+            echo("votre commentaire a été enregistré dans la base de données)"); 
+        }
+
     }
 
 

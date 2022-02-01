@@ -17,11 +17,11 @@ $router->get('/article/:id', 'App\Controller\BookController@show');
 $router->get('/addarticle', 'App\Controller\BookController@add');
 $router->post('/addarticle', 'App\Controller\BookController@add');
 
-//en cours
-$router->get('/modifyarticle/:id', 'App\Controller\BookController@modify');
-$router->post('/modifyarticle/:id', 'App\Controller\BookController@modify');
+//en cours seul show et delete fonctionne pour les notes. mais je n'arrive pas à adde sous un book...
+$router->get('/modifynote/:id', 'App\Controller\NoteController@modify');
+$router->post('/modifynote/:id', 'App\Controller\NoteController@modify');
 
-$router->get('/deletearticle/:id', 'App\Controller\BookController@delete');
+$router->get('/deletenote/:id', 'App\Controller\BookController@delete');
 
 
 // //montrer commentaire
