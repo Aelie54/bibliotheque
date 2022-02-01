@@ -32,16 +32,16 @@ class Book
     private int $n_isbn;
 
     /*
-     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="author", referencedColumnName="id", nullable=true, onDelete="SET NULL")
     */
-    private Author $author;
+    private User $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Editor")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="editor", referencedColumnName="id", nullable=true, onDelete="SET NULL")
     */
-    private Editor $editor;
+    private User $editor;
 
     
     /**

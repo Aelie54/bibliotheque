@@ -5,8 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM ;
 
 /** @ORM\Entity 
+ *  @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="unique_user_details", columns={"email"})})
 */
-class Editor{
+class User{
 
     /**
      * @ORM\Id
@@ -19,6 +20,12 @@ class Editor{
      * @ORM\Column(type="string")
      */
     private string $name;
+
+    /*
+    * @ORM\Column(length="100")
+   */
+   private string $email;
+
 
     public function __construct (int $id, string $pseudo){
 
@@ -55,5 +62,26 @@ class Editor{
 
         return $this;
     }
-    
+
+
+   /**
+    * Get /*
+    */ 
+   public function getEmail()
+   {
+      return $this->email;
+   }
+
+   /**
+    * Set /*
+    *
+    * @return  self
+    */ 
+   public function setEmail($email)
+   {
+      $this->email = $email;
+
+      return $this;
+   }
+   
 }

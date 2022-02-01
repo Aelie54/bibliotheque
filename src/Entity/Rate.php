@@ -90,4 +90,25 @@ class Rate
     }
 
 
+
+    /**
+     * Get the value of book
+     */ 
+    public function getBook()
+    {
+        return $this->book;
+    }
+
+    /**
+     * Set the value of book
+     *
+     * @return  self
+     */ 
+    public function setBook($book)
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
 }
